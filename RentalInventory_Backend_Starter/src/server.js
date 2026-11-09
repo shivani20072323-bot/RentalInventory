@@ -7,7 +7,16 @@ import rentalRoutes from "./routes/rentals.js";
 
 dotenv.config();
 const app = express();
-app.use(cors({ origin: ["http://localhost:8080", "http://localhost:5173"], credentials: true }));
+app.use(cors({
+  origin: [
+    "https://rental-inventory-faco.vercel.app",
+    "http://localhost:8080",
+    "http://localhost:5173",
+  ],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+}));
 app.use(express.json());
 
 app.get("/api/health", (_req, res) => res.json({ status: "ok", service: "RentalInventory API" }));
