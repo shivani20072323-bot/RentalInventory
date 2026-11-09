@@ -1,6 +1,6 @@
 import type { Category, Condition, Equipment, Rental, RentalStatus } from "./types";
 
-const API_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000/api";
+const API_URL = (import.meta.env.VITE_BACKEND_URL?.trim() || "https://rentalinventory-1.onrender.com/api").replace(/\/+$/, "");
 
 type ApiEquipment = Omit<Equipment, "id" | "createdAt"> & { _id: string; condition: string; createdAt?: string; updatedAt?: string };
 type ApiRental = {
